@@ -81,3 +81,83 @@ def fetch_weather_and_forecast(city, api_key, current_weather_url, forecast_url)
             })
 
     return weather_data, daily_forecasts[:5]  # Return the forecasts for the next 5 days for one city
+
+
+#Building UI:-Template:-
+
+#city_weather.html file:-
+This code is a template written in the Django template language (usually used within HTML files) 
+and it's designed to render weather data on a web page fetched from the backend using Django.
+
+{% if weather_data %}
+    <h1>{{ weather_data.city }}</h1>
+    <h2>{{ weather_data.temperature }}°C</h2>
+    <p>{{ weather_data.description }}</p>
+    <img src="http://openweathermap.org/img/w/{{ weather_data.icon }}.png" alt="{{ weather_data.description }}">
+{% endif %}
+
+{% if daily_forecasts %}
+    <h2>5-Day Forecast</h2>
+    <div class="forecast-container">
+        {% for forecast in daily_forecasts %}
+            <div class="forecast">
+                <h3>{{ forecast.day }}</h3>
+                <p>{{ forecast.min_temp }}°C - {{ forecast.max_temp }}°C</p>
+                <p>{{ forecast.description }}</p>
+                <img src="http://openweathermap.org/img/w/{{ forecast.icon }}.png" alt="{{ forecast.description }}">
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+#index.html file:-
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="city1" placeholder="Enter city 1">
+  <!-- Remove the input field for the second city -->
+  <button type="submit">Get Weather</button>
+</form>
+
+<div class="city-container">
+  {% if weather_data %}
+    <!-- Display weather data and forecasts for city 1 -->
+    {% include 'weatherapp/city_weather.html' with weather_data=weather_data daily_forecasts=daily_forecasts %}
+  {% endif %}
+</div>
+
+</body>
+</html>
+
+#Url configuration:=
+--->app level urls.py file:-
+
+ from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+]
+
+
+--->project level urls.py file:-
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path('', include('weatherapp.urls')),
+]
