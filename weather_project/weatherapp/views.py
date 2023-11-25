@@ -35,23 +35,21 @@ def fetch_weather_and_forecast(city, api_key, current_weather_url, forecast_url)
     }
 
     daily_forecasts = []
-    dates = set()  # To keep track of unique dates for forecast aggregation
+    dates = set()
     for data in forecast_response['list']:
-        date_txt = data['dt_txt']  # Get the date and time for the forecast
+        date_txt = data['dt_txt']
         date_obj = datetime.datetime.strptime(date_txt, '%Y-%m-%d %H:%M:%S')
         date = date_obj.date()
 
-        # Filter data for a single forecast per day
-        if date not in dates and date_obj.hour == 12:  # Assuming the API provides data for noon (12:00:00)
+        if date not in dates and date_obj.hour == 12:
             dates.add(date)
-            # Capture the minimum and maximum temperatures for the day
-            min_temp = max_temp = data['main']['temp']  # Initialize with the current temperature
+
+            min_temp = max_temp = data['main']['temp']
             for hour_data in forecast_response['list']:
                 hour_date_txt = hour_data['dt_txt']
                 hour_date_obj = datetime.datetime.strptime(hour_date_txt, '%Y-%m-%d %H:%M:%S')
                 hour_date = hour_date_obj.date()
                 
-                # Check if the hour_data belongs to the same date as the current date and update min/max temps
                 if hour_date == date and 'main' in hour_data:
                     min_temp = min(min_temp, hour_data['main']['temp'])
                     max_temp = max(max_temp, hour_data['main']['temp'])
@@ -64,5 +62,5 @@ def fetch_weather_and_forecast(city, api_key, current_weather_url, forecast_url)
                 'icon': data['weather'][0]['icon'],
             })
 
-    return weather_data, daily_forecasts[:5]  # Return the forecasts for the next 5 days for one city
+    return weather_data, daily_forecasts[:5]
 
