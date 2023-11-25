@@ -1,4 +1,4 @@
-# weatherforcast_project:-
+# weatherforecast_project:-
 **Project Details:-**
 - Build a weather dashboard using Python and the Flask/Django web framework.
 - Use an HTTP client (e.g., Requests) to fetch weather data from a public weather API (e.g., OpenWeatherMap, WeatherStack).
