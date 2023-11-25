@@ -1,5 +1,5 @@
 # weatherforcast_project:-
-#Project Details:
+**Project Details:-**
 - Build a weather dashboard using Python and the Flask/Django web framework.
 - Use an HTTP client (e.g., Requests) to fetch weather data from a public weather API (e.g., OpenWeatherMap, WeatherStack).
 - Display the fetched weather data in a user-friendly web interface.
@@ -7,16 +7,17 @@
 - Implement responsive design for the dashboard using HTML, CSS, and JavaScript.
 - Host the dashboard using Flask/Django on a platform of your choice.
   
-#setting up django_project:-
+**setting up django_project:-**
 -Building a weather dashboard using Django involves several steps are fallows.
 -Create a Django project(use 'django-admin startproject project_name' to create a new Django project)
 -Create an app for weather(use 'python manage.py startapp app_name' to create an app within your project specifically for handling weather-related functionality)
 
-#Libraries Used:
+**Libraries Used:-**
 requests: Used to make HTTP requests to the OpenWeatherMap API.
 datetime: Utilized for handling date and time-related operations.
 
-#Code:-views.py file
+**Code:-**
+--->views.py file:-
 
 def index(request):            #The index function handles both GET and POST requests..
     api_key = '6af560462ed37c5292774a063bf63ec6' # openweather API key used for authentication.
@@ -82,10 +83,9 @@ def fetch_weather_and_forecast(city, api_key, current_weather_url, forecast_url)
 
     return weather_data, daily_forecasts[:5]  # Return the forecasts for the next 5 days for one city
 
+**Building UI:-Template:-**
 
-#Building UI:-Template:-
-
-#city_weather.html file:-
+--->city_weather.html file:-
 This code is a template written in the Django template language (usually used within HTML files) 
 and it's designed to render weather data on a web page fetched from the backend using Django.
 
@@ -111,7 +111,7 @@ and it's designed to render weather data on a web page fetched from the backend 
 {% endif %}
 
 
-#index.html file:-
+--->index.html file:-
 
 {% load static %}
 <!DOCTYPE html>
@@ -141,7 +141,7 @@ and it's designed to render weather data on a web page fetched from the backend 
 </body>
 </html>
 
-#Url configuration:=
+**Url configuration:-**
 --->app level urls.py file:-
 
  from django.urls import path
