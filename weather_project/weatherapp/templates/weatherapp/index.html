@@ -12,13 +12,11 @@
 <form method="post">
   {% csrf_token %}
   <input type="text" name="city1" placeholder="Enter city 1">
-  <!-- Remove the input field for the second city -->
   <button type="submit">Get Weather</button>
 </form>
 
 <div class="city-container">
   {% if weather_data %}
-    <!-- Display weather data and forecasts for city 1 -->
     {% include 'weatherapp/city_weather.html' with weather_data=weather_data daily_forecasts=daily_forecasts %}
   {% endif %}
 </div>
