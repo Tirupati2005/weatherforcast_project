@@ -175,12 +175,12 @@ Virtual Environment: Recommended for isolating dependencies.
 Steps:
 1. Clone the Repository
 If the project is hosted on a version control system like Git, clone it to your local machine using:
-git clone <weather_project>
+git clone <[weather_project](https://github.com/Tirupati2005/weatherforecast_project)>
 cd <weather_project>
 2. Set up a Virtual Environment (Optional but recommended)
 
 # Install virtualenv if you haven't already
-pip install virtualenv
+using:- pip install venv
 
 # Create a virtual environment
 using:- py -m venv myenv
