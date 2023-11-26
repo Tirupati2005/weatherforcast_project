@@ -87,6 +87,7 @@ def fetch_weather_and_forecast(city, api_key, current_weather_url, forecast_url)
 **Building UI:-Template:-**
 
 --->city_weather.html file:-
+
 This code is a template written in the Django template language (usually used within HTML files) 
 and it's designed to render weather data on a web page fetched from the backend using Django.
 
