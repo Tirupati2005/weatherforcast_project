@@ -1,4 +1,5 @@
-# weatherforecast_project:-
+# Weatherforecast_project:-
+
 **Project Details:-**
 - Build a weather dashboard using Python and the Flask/Django web framework.
 - Use an HTTP client (e.g., Requests) to fetch weather data from a public weather API (e.g., OpenWeatherMap, WeatherStack).
@@ -161,3 +162,40 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('weatherapp.urls')),
 ]
+
+
+
+**Here are step-by-step instructions on how to run a  project locally:**
+
+Ensure Python is installed (preferably Python 3.10.13)
+Python package manager (usually comes with Python installation).
+Virtual Environment: Recommended for isolating dependencies.
+
+
+Steps:
+1. Clone the Repository
+If the project is hosted on a version control system like Git, clone it to your local machine using:
+git clone <weather_project>
+cd <weather_project>
+2. Set up a Virtual Environment (Optional but recommended)
+
+# Install virtualenv if you haven't already
+pip install virtualenv
+
+# Create a virtual environment
+using:- py -m venv myenv
+
+# Activate the virtual environment(for windows)
+
+using:- myenv\Scripts\activate.bat
+
+# Install project dependencies
+pip install django requests(requests is a python labrary)
+
+# Run the developmrnt server
+
+using:- python manage.py runserver
+
+# Accesse the application
+
+Open a web browser and go to http://127.0.0.1:8000/ or http://localhost:8000/ to view the running application. If there are specific routes or endpoints, access them accordingly.
